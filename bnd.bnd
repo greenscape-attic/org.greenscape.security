@@ -1,0 +1,15 @@
+Bundle-Version: 0.1.0
+Private-Package:  \
+	org.greenscape.security,\
+	org.greenscape.security.weave,\
+	org.greenscape.security.auth
+-buildpath:  \
+	org.apache.shiro.core,\
+	org.eclipse.osgi.services,\
+	org.apache.shiro.web,\
+	osgi.core;version=4.3,\
+	org.greenscape.core;version=latest,\
+	org.amdatu.web.rest.jaxrs
+-dsannotations:  \
+	*
+Include-Resource: META-INF=resource
