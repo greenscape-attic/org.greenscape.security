@@ -1,7 +1,5 @@
 package org.greenscape.security.auth;
 
-import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -15,8 +13,6 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.greenscape.core.model.UserEntity;
-import org.greenscape.core.model.UserModel;
 import org.greenscape.core.service.Service;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -32,8 +28,7 @@ public class AuthenticationRootPath {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public UserModel signin(LoginParam param) {
-		UserEntity user = null;
+	public String signin(LoginParam param) {
 		Subject subject = SecurityUtils.getSubject();
 		if (!subject.isAuthenticated()) {
 			UsernamePasswordToken token = new UsernamePasswordToken(param.getUsername(), param.getPassword());
@@ -45,16 +40,22 @@ public class AuthenticationRootPath {
 						.entity("Username or password is incorrect").build());
 			}
 		}
-		List<UserEntity> users = service.find(UserModel.MODEL_NAME, UserEntity.USER_NAME, subject.getPrincipal());
-		user = users.get(0);
-		return user;
+		return subject.getPrincipal().toString();
 	}
 
 	@Path("/signout")
 	@POST
-	public void signout() {
+	@Produces(MediaType.APPLICATION_JSON)
+	public String signout() {
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
+		return Response.status(Status.OK).build().toString();
+	}
+
+	@Path("/register")
+	@POST
+	public void register() {
+
 	}
 
 	@Reference(policy = ReferencePolicy.DYNAMIC, policyOption = ReferencePolicyOption.GREEDY)

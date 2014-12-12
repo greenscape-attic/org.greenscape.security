@@ -2,14 +2,24 @@ Bundle-Version: 0.1.0
 Private-Package:  \
 	org.greenscape.security,\
 	org.greenscape.security.weave,\
-	org.greenscape.security.auth
+	org.greenscape.security.auth,\
+	org.greenscape.security.oauth2,\
+	org.greenscape.security.oauth2.util
 -buildpath:  \
 	org.apache.shiro.core,\
 	org.eclipse.osgi.services,\
 	org.apache.shiro.web,\
 	osgi.core;version=4.3,\
 	org.greenscape.core;version=latest,\
-	org.amdatu.web.rest.jaxrs
+	org.amdatu.web.rest.jaxrs,\
+	javax.servlet,\
+	org.apache.oltu.oauth2.common,\
+	org.apache.oltu.oauth2.dynamicreg.server,\
+	org.apache.oltu.oauth2.authzserver,\
+	org.apache.oltu.oauth2.resourceserver,\
+	org.apache.oltu.oauth2.client
 -dsannotations:  \
 	*
 Include-Resource: META-INF=resource
+javac.source: 1.7
+javac.target: 1.7
