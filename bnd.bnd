@@ -9,7 +9,7 @@ Private-Package:  \
 	org.apache.shiro.core,\
 	org.eclipse.osgi.services,\
 	org.apache.shiro.web,\
-	osgi.core;version=4.3,\
+	osgi.core;version=5.0,\
 	org.greenscape.core;version=latest,\
 	org.amdatu.web.rest.jaxrs,\
 	javax.servlet,\
@@ -21,5 +21,5 @@ Private-Package:  \
 -dsannotations:  \
 	*
 Include-Resource: META-INF=resource
-javac.source: 1.7
-javac.target: 1.7
+javac.source: 1.8
+javac.target: 1.8
