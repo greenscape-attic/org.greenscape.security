@@ -17,7 +17,8 @@ Private-Package:  \
 	org.apache.oltu.oauth2.dynamicreg.server,\
 	org.apache.oltu.oauth2.authzserver,\
 	org.apache.oltu.oauth2.resourceserver,\
-	org.apache.oltu.oauth2.client
+	org.apache.oltu.oauth2.client,\
+	org.greenscape.persistence;version=latest
 -dsannotations:  \
 	*
 Include-Resource: META-INF=resource
